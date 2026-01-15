@@ -52,7 +52,13 @@ def process_image(detector, image_path: str, threshold: float = 0.6, save_dir: s
         bboxes = [face.bbox for face in faces]
         scores = [face.confidence for face in faces]
         landmarks = [face.landmarks for face in faces]
-        draw_detections(image, bboxes, scores, landmarks, vis_threshold=threshold)
+        draw_detections(
+            image=image,
+            bboxes=bboxes,
+            scores=scores,
+            landmarks=landmarks,
+            vis_threshold=threshold,
+        )
 
     os.makedirs(save_dir, exist_ok=True)
     output_path = os.path.join(save_dir, f'{os.path.splitext(os.path.basename(image_path))[0]}_out.jpg')
